@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ehc/api/categories": ["libs/api/categories/src/index.ts"],
       "@ehc/api/database": ["libs/api/database/src/index.ts"],
       "@ehc/api/users": ["libs/api/users/src/index.ts"],
       "@ehc/common/category": ["libs/common/category/src/index.ts"],
