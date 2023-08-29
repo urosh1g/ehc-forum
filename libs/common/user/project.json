@@ -1,0 +1,29 @@
+{
+  "name": "common-user",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/common/user/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/common/user",
+        "main": "libs/common/user/src/index.ts",
+        "tsConfig": "libs/common/user/tsconfig.lib.json",
+        "assets": ["libs/common/user/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/common/user/**/*.ts",
+          "libs/common/user/package.json"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:common", "type:lib"]
+}
