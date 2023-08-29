@@ -1,0 +1,29 @@
+{
+  "name": "common--post",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/common/post/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/common/post",
+        "main": "libs/common/post/src/index.ts",
+        "tsConfig": "libs/common/post/tsconfig.lib.json",
+        "assets": ["libs/common/post/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/common/post/**/*.ts",
+          "libs/common/post/package.json"
+        ]
+      }
+    }
+  },
+  "tags": ["scope:common", "type:lib"]
+}

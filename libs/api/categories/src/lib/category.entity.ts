@@ -1,5 +1,5 @@
 import { ICategory } from '@ehc/common/category'
-import { User } from '@ehc/api/users'
+import { IUser } from '@ehc/common/user'
 import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 @Entity()
@@ -10,7 +10,7 @@ class Category implements ICategory {
     @Column()
     name!: string;
 
-    users!: User[];
+    users!: IUser[];
 }
 
 export { Category }
