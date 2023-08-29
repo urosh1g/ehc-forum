@@ -20,6 +20,9 @@
       "@ehc/api/posts": ["libs/api/posts/src/index.ts"],
       "@ehc/api/users": ["libs/api/users/src/index.ts"],
       "@ehc/common/category": ["libs/common/category/src/index.ts"],
+      "@ehc/common/dtos": ["libs/common/dtos/src/index.ts"],
+      "@ehc/common/entities": ["libs/common/entities/src/index.ts"],
+      "@ehc/common/interfaces": ["libs/common/interfaces/src/index.ts"],
       "@ehc/common/post": ["libs/common/post/src/index.ts"],
       "@ehc/common/user": ["libs/common/user/src/index.ts"]
     }

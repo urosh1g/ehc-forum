@@ -1,9 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { User } from '../../../../common/user/src/lib/user.entity';
-import { Category } from '@ehc/common/category';
-import { CreateUser } from '@ehc/common/user'
+import { User, Category } from '@ehc/common/entities';
+import { CreateUser } from '@ehc/common/dtos';
 
 @Injectable()
 export class UsersService {
@@ -19,19 +18,21 @@ export class UsersService {
   }
 
   async fetchById(id: number): Promise<User> {
-    const user = await this.usersRepository.findOneBy({id});
-    if(!user) {
+    const user = await this.usersRepository.findOneBy({ id });
+    if (!user) {
       throw new NotFoundException(`User with id ${id} not found`);
     }
     return user;
   }
 
   async fetchByCategory(categoryId: number): Promise<User[]> {
-    const category = await this.categoryRepository.findOneBy({id: categoryId});
-    if(!category) {
+    const category = await this.categoryRepository.findOneBy({
+      id: categoryId,
+    });
+    if (!category) {
       throw new NotFoundException(`Category with id ${categoryId} not found`);
     }
-    return this.usersRepository.findBy({categories: [category]});
+    return this.usersRepository.findBy({ categories: [category] });
   }
 
   async create(dto: CreateUser): Promise<User> {

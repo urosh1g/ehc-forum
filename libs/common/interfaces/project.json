@@ -1,17 +1,17 @@
 {
-  "name": "common--category",
+  "name": "common--interfaces",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/common/category/src",
+  "sourceRoot": "libs/common/interfaces/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/common/category",
-        "main": "libs/common/category/src/index.ts",
-        "tsConfig": "libs/common/category/tsconfig.lib.json",
-        "assets": ["libs/common/category/*.md"]
+        "outputPath": "dist/libs/common/interfaces",
+        "main": "libs/common/interfaces/src/index.ts",
+        "tsConfig": "libs/common/interfaces/tsconfig.lib.json",
+        "assets": ["libs/common/interfaces/*.md"]
       }
     },
     "lint": {
@@ -19,8 +19,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/common/category/**/*.ts",
-          "libs/common/category/package.json"
+          "libs/common/interfaces/**/*.ts",
+          "libs/common/interfaces/package.json"
         ]
       }
     }

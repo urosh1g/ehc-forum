@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { Post } from '@ehc/common/post'
+import { Post } from '@ehc/common/entities'
 import { PostsController } from './posts.controller';
 import { PostsService } from './posts.service';
 import { TypeOrmModule } from '@nestjs/typeorm';

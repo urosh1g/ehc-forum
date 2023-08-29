@@ -1,17 +1,17 @@
 {
-  "name": "common--post",
+  "name": "common--entities",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/common/post/src",
+  "sourceRoot": "libs/common/entities/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/common/post",
-        "main": "libs/common/post/src/index.ts",
-        "tsConfig": "libs/common/post/tsconfig.lib.json",
-        "assets": ["libs/common/post/*.md"]
+        "outputPath": "dist/libs/common/entities",
+        "main": "libs/common/entities/src/index.ts",
+        "tsConfig": "libs/common/entities/tsconfig.lib.json",
+        "assets": ["libs/common/entities/*.md"]
       }
     },
     "lint": {
@@ -19,8 +19,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/common/post/**/*.ts",
-          "libs/common/post/package.json"
+          "libs/common/entities/**/*.ts",
+          "libs/common/entities/package.json"
         ]
       }
     }

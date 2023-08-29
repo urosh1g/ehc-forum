@@ -1,17 +1,17 @@
 {
-  "name": "common-user",
+  "name": "common--dtos",
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/common/user/src",
+  "sourceRoot": "libs/common/dtos/src",
   "projectType": "library",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/common/user",
-        "main": "libs/common/user/src/index.ts",
-        "tsConfig": "libs/common/user/tsconfig.lib.json",
-        "assets": ["libs/common/user/*.md"]
+        "outputPath": "dist/libs/common/dtos",
+        "main": "libs/common/dtos/src/index.ts",
+        "tsConfig": "libs/common/dtos/tsconfig.lib.json",
+        "assets": ["libs/common/dtos/*.md"]
       }
     },
     "lint": {
@@ -19,8 +19,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "libs/common/user/**/*.ts",
-          "libs/common/user/package.json"
+          "libs/common/dtos/**/*.ts",
+          "libs/common/dtos/package.json"
         ]
       }
     }

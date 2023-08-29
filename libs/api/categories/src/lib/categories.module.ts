@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { CategoriesController } from './categories.controller';
 import { CategoriesService } from './categories.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Category } from '../../../../common/category/src/lib/category.entity';
+import { Category } from '@ehc/common/entities';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Category])],

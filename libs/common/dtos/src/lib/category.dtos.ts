@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsString } from "class-validator";
-import { ICreateCategory } from "./category.interface";
+import { ICreateCategory } from "@ehc/common/interfaces";
 
 //TODO UpdateCategoryDto
 

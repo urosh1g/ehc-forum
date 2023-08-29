@@ -4,7 +4,7 @@ import {
   IsString,
   IsStrongPassword,
 } from 'class-validator';
-import { ICreateUser, IUpdateUser } from './user.interface';
+import { ICreateUser, IUpdateUser } from '@ehc/common/interfaces';
 
 class CreateUser implements ICreateUser {
   @IsNotEmpty()
