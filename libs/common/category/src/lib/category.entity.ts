@@ -1,6 +1,7 @@
 import { ICategory } from '@ehc/common/category'
 import { IUser } from '@ehc/common/user'
-import { Column, Entity, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { Post } from '@ehc/common/post'
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 @Entity()
 @Unique(['name'])
@@ -11,6 +12,8 @@ class Category implements ICategory {
     name!: string;
 
     users!: IUser[];
+    @ManyToMany(type => Post, post => post.categories)
+    posts!: Post[];
 }
 
 export { Category }

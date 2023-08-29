@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { User } from './user.entity';
+import { User } from '../../../../common/user/src/lib/user.entity';
 import { CreateUser } from '@ehc/common/user';
 
 @Controller('users')

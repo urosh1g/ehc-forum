@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
-import { Category } from './category.entity';
+import { Category } from '../../../../common/category/src/lib/category.entity';
 import { CreateCategory } from '@ehc/common/category';
 
 @Controller('categories')

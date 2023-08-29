@@ -1,10 +1,13 @@
 import { Module } from '@nestjs/common';
-import { ApiPostsController } from './posts.controller';
-import { ApiPostsService } from './posts.service';
+import { Post } from '@ehc/common/post'
+import { PostsController } from './posts.controller';
+import { PostsService } from './posts.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  controllers: [ApiPostsController],
-  providers: [ApiPostsService],
-  exports: [ApiPostsService],
+  imports: [TypeOrmModule.forFeature([Post])],
+  controllers: [PostsController],
+  providers: [PostsService],
+  exports: [PostsService],
 })
-export class ApiPostsModule {}
+export class PostsModule {}
