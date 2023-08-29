@@ -1,6 +1,6 @@
 import { Category } from '@ehc/api/categories'
 import { IUser } from '@ehc/common/user'
-import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, Unique } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 @Entity()
 @Unique(["alias", "email"])

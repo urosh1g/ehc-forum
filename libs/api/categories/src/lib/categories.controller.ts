@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { Category } from './category.entity';
+import { CreateCategory } from '@ehc/common/category';
 
 @Controller('categories')
 export class CategoriesController {
@@ -9,5 +10,15 @@ export class CategoriesController {
   @Get('')
   fetchCategories(): Promise<Category[]> {
     return this.categoriesService.fetchAll();
+  }
+
+  @Get(':id')
+  fetchById(@Param('id', ParseIntPipe)id: number): Promise<Category> {
+    return this.categoriesService.fetchById(id);
+  }
+
+  @Post('')
+  create(@Body() dto: CreateCategory): Promise<Category> {
+    return this.categoriesService.create(dto);
   }
 }
