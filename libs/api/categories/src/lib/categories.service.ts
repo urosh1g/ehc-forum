@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Category } from '@ehc/common/entities';
-import { CreateCategory } from '@ehc/common/dtos';
+import { CreateCategory, UpdateCategory } from '@ehc/common/dtos';
 
 @Injectable()
 export class CategoriesService {
@@ -17,7 +17,7 @@ export class CategoriesService {
   async fetchById(id: number): Promise<Category> {
     const category = await this.categoryRepository.findOneBy({id});
     if(!category) {
-      throw new NotFoundException(`Category with id ${id} not found`);
+      throw new NotFoundException(`Category with id ${id} was not found`);
     }
     return category;
   }
@@ -25,5 +25,23 @@ export class CategoriesService {
   async create(dto: CreateCategory): Promise<Category> {
     const category = this.categoryRepository.create(dto);
     return this.categoryRepository.save(category);
+  }
+
+  async update(id: number, dto: UpdateCategory): Promise<Category> {
+    await this.categoryRepository.update(id, dto);
+    const category = await this.categoryRepository.findOneBy({id});
+    if(!category) {
+      throw new NotFoundException(`Category with id ${id} was not found`);
+    }
+    return category;
+  }
+
+  async delete(id: number): Promise<Category> {
+    const category = await this.categoryRepository.findOneBy({id});
+    if(!category) {
+      throw new NotFoundException(`Category with id ${id} was not found`);
+    }
+    this.categoryRepository.delete(id);
+    return category;
   }
 }
