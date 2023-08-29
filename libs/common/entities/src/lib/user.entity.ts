@@ -1,4 +1,5 @@
-import { Post, Category } from '@ehc/common/entities'
+import { Post } from './post.entity';
+import { Category } from './category.entity';
 import { IUser } from '@ehc/common/interfaces';
 import { Column, Entity, JoinTable, ManyToMany, OneToMany, PrimaryGeneratedColumn, Unique } from 'typeorm';
 

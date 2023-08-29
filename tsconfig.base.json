@@ -18,6 +18,7 @@
       "@ehc/api/categories": ["libs/api/categories/src/index.ts"],
       "@ehc/api/database": ["libs/api/database/src/index.ts"],
       "@ehc/api/posts": ["libs/api/posts/src/index.ts"],
+      "@ehc/api/threads": ["libs/api/threads/src/index.ts"],
       "@ehc/api/users": ["libs/api/users/src/index.ts"],
       "@ehc/common/category": ["libs/common/category/src/index.ts"],
       "@ehc/common/dtos": ["libs/common/dtos/src/index.ts"],

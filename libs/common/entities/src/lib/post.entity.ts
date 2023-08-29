@@ -1,6 +1,8 @@
 import { IPost } from '@ehc/common/interfaces'
-import { User, Category } from '@ehc/common/entities'
-import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Thread } from './thread.entity';
+import { Category } from './category.entity';
+import { User } from './user.entity';
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 class Post implements IPost {
@@ -17,6 +19,9 @@ class Post implements IPost {
 
     @ManyToOne(type => User, user => user.posts)
     author!: User;
+
+    @ManyToOne(type => Thread, thread => thread.posts)
+    thread!: Thread;
 }
 
 export { Post }
