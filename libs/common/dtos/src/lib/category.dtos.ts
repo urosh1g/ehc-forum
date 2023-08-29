@@ -1,5 +1,5 @@
 import { IsNotEmpty, IsString } from "class-validator";
-import { ICreateCategory } from "@ehc/common/interfaces";
+import { ICreateCategory, IUpdateCategory } from "@ehc/common/interfaces";
 
 //TODO UpdateCategoryDto
 
@@ -9,4 +9,6 @@ class CreateCategory implements ICreateCategory {
     name!: string;
 }
 
-export { CreateCategory }
+class UpdateCategory implements IUpdateCategory {}
+
+export { CreateCategory, UpdateCategory }

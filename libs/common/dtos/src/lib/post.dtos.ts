@@ -1,8 +1,10 @@
-import { ICreatePost } from '@ehc/common/interfaces';
+import { ICreatePost, IUpdatePost } from '@ehc/common/interfaces';
 
 class CreatePost implements ICreatePost {
   title!: string;
   body!: string;
 }
 
-export { CreatePost };
+class UpdatePost implements IUpdatePost {}
+
+export { CreatePost, UpdatePost };
