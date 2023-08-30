@@ -30,8 +30,8 @@ export class PostsService {
 
   async create(dto: CreatePost): Promise<Post> {
     const post = this.postRepository.create(dto);
-    let categories = dto.categoryIds.map((id) => {
-      let category = new Category();
+    const categories = dto.categoryIds.map((id) => {
+      const category = new Category();
       category.id = id;
       return category;
     });

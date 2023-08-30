@@ -9,7 +9,7 @@ describe('PostsService', () => {
   beforeEach(async () => {
     const module = await Test.createTestingModule({
       providers: [PostsService],
-      imports: [TypeOrmModule.forFeature([Post])]
+      imports: [TypeOrmModule.forFeature([Post])],
     }).compile();
 
     service = module.get(PostsService);
@@ -20,7 +20,7 @@ describe('PostsService', () => {
   });
 
   it('should insert', async () => {
-    const post = await service.create({title: "title", body: "text"});
+    const post = await service.create({ title: 'title', body: 'text' });
     expect(post).toBeTruthy();
-  })
+  });
 });

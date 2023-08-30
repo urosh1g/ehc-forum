@@ -8,7 +8,6 @@ import {
   Patch,
   Delete,
   Query,
-  Logger,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { Post } from '@ehc/common/entities';
@@ -25,7 +24,10 @@ export class PostsController {
   }
 
   @Get(':id')
-  fetchOne(@Param('id', ParseIntPipe) id: number, @Query() query: PostQuery): Promise<Post> {
+  fetchOne(
+    @Param('id', ParseIntPipe) id: number,
+    @Query() query: PostQuery
+  ): Promise<Post> {
     return this.postsService.fetchOne(id, query);
   }
 
@@ -43,7 +45,7 @@ export class PostsController {
   }
 
   @Delete(':id')
-  delete(@Param('id', ParseIntPipe)id: number): Promise<Post> {
+  delete(@Param('id', ParseIntPipe) id: number): Promise<Post> {
     return this.postsService.delete(id);
   }
 }

@@ -25,4 +25,4 @@ class CategoryQuery {
   threads?: boolean;
 }
 
-export { CreateCategory, UpdateCategory, CategoryQuery};
+export { CreateCategory, UpdateCategory, CategoryQuery };

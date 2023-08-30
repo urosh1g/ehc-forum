@@ -36,7 +36,7 @@ export class ThreadsService {
   create(dto: CreateThread): Promise<Thread> {
     const thread = this.threadRepository.create(dto);
     thread.categories = dto.categoryIds.map((categoryId) => {
-      return { id: categoryId } as Category
+      return { id: categoryId } as Category;
     });
     return this.threadRepository.save(thread);
   }

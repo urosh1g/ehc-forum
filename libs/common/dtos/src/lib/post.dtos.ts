@@ -1,5 +1,11 @@
 import { ICreatePost, IUpdatePost } from '@ehc/common/interfaces';
-import { IsBoolean, IsOptional, IsNotEmpty, IsString, IsNumber } from 'class-validator';
+import {
+  IsBoolean,
+  IsOptional,
+  IsNotEmpty,
+  IsString,
+  IsNumber,
+} from 'class-validator';
 import { Transform } from 'class-transformer';
 
 class CreatePost implements ICreatePost {
