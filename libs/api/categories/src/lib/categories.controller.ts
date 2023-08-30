@@ -40,7 +40,7 @@ export class CategoriesController {
   }
 
   @Delete(':id')
-  delete(@Param('id', ParseIntPipe)id: number): Promise<Category> {
+  delete(@Param('id', ParseIntPipe) id: number): Promise<Category> {
     return this.categoriesService.delete(id);
   }
 }

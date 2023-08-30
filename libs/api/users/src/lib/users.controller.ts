@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Param, ParseIntPipe, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { User } from '@ehc/common/entities';
 import { CreateUser } from '@ehc/common/dtos';
@@ -13,7 +20,9 @@ export class UsersController {
   }
 
   @Get('category/:id')
-  fetchByCategory(@Param('id', ParseIntPipe) categoryId: number): Promise<User[]> {
+  fetchByCategory(
+    @Param('id', ParseIntPipe) categoryId: number
+  ): Promise<User[]> {
     return this.usersService.fetchByCategory(categoryId);
   }
 

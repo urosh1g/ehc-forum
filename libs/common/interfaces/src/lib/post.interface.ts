@@ -7,4 +7,4 @@ interface IPost {
 type ICreatePost = Omit<IPost, 'id'>;
 type IUpdatePost = Partial<ICreatePost>;
 
-export { IPost, ICreatePost, IUpdatePost }
+export { IPost, ICreatePost, IUpdatePost };
