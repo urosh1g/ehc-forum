@@ -7,23 +7,24 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { Category } from '@ehc/common/entities';
-import { CreateCategory, UpdateCategory } from '@ehc/common/dtos';
+import { CategoryQuery, CreateCategory, UpdateCategory } from '@ehc/common/dtos';
 
 @Controller('categories')
 export class CategoriesController {
   constructor(private categoriesService: CategoriesService) {}
 
   @Get('')
-  fetchCategories(): Promise<Category[]> {
-    return this.categoriesService.fetchAll();
+  fetchCategories(@Query() query: CategoryQuery): Promise<Category[]> {
+    return this.categoriesService.fetchAll(query);
   }
 
   @Get(':id')
-  fetchById(@Param('id', ParseIntPipe) id: number): Promise<Category> {
-    return this.categoriesService.fetchById(id);
+  fetchById(@Param('id', ParseIntPipe) id: number, @Query() query: CategoryQuery): Promise<Category> {
+    return this.categoriesService.fetchById(id, query);
   }
 
   @Post('')

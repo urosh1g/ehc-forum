@@ -19,7 +19,6 @@ class Thread implements IThread {
   @ManyToMany((type) => Category, (category) => category.threads)
   @JoinTable()
   categories!: Category[];
-
   @OneToMany((type) => Post, (post) => post.thread)
   posts!: Post[];
 }

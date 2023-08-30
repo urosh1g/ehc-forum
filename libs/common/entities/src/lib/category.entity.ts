@@ -22,7 +22,6 @@ class Category implements ICategory {
   users!: User[];
   @ManyToMany((type) => Post, (post) => post.categories)
   posts!: Post[];
-
   @ManyToMany((type) => Thread, (thread) => thread.categories)
   threads!: Thread[];
 }

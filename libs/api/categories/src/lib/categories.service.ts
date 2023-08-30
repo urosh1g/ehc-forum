@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Category } from '@ehc/common/entities';
-import { CreateCategory, UpdateCategory } from '@ehc/common/dtos';
+import { CreateCategory, UpdateCategory, CategoryQuery } from '@ehc/common/dtos';
 
 @Injectable()
 export class CategoriesService {
@@ -10,12 +10,14 @@ export class CategoriesService {
     @InjectRepository(Category)
     private categoryRepository: Repository<Category>
   ) {}
-  fetchAll(): Promise<Category[]> {
-    return this.categoryRepository.find();
+  fetchAll(query: CategoryQuery): Promise<Category[]> {
+    return this.categoryRepository.find({
+      relations: query
+    });
   }
 
-  async fetchById(id: number): Promise<Category> {
-    const category = await this.categoryRepository.findOneBy({ id });
+  async fetchById(id: number, query: CategoryQuery): Promise<Category> {
+    const category = await this.categoryRepository.findOne({where: {id}, relations: query});
     if (!category) {
       throw new NotFoundException(`Category with id ${id} was not found`);
     }
