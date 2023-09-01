@@ -1,3 +1,4 @@
+import { Comment } from './comment.entity';
 import { Post } from './post.entity';
 import { Category } from './category.entity';
 import { IUser } from '@ehc/common/interfaces';
@@ -10,6 +11,7 @@ import {
   PrimaryGeneratedColumn,
   Unique,
 } from 'typeorm';
+import { Exclude } from 'class-transformer';
 
 @Entity()
 @Unique(['alias', 'email'])
@@ -19,6 +21,7 @@ class User implements IUser {
   @Column()
   alias!: string;
   @Column()
+  @Exclude()
   password!: string;
   @Column()
   email!: string;
@@ -29,6 +32,9 @@ class User implements IUser {
 
   @OneToMany((type) => Post, (post) => post.author)
   posts!: Post[];
+
+  @OneToMany((type) => Comment, comment => comment.author)
+  comments!: Comment[];
 }
 
 export { User };

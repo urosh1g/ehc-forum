@@ -20,6 +20,9 @@ class CreatePost implements ICreatePost {
   @IsNotEmpty()
   @IsNumber()
   threadId!: number;
+  @IsNotEmpty()
+  @IsNumber()
+  authorId!: number;
 }
 
 class UpdatePost implements IUpdatePost {}

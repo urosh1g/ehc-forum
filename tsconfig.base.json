@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@ehc/api/categories": ["libs/api/categories/src/index.ts"],
+      "@ehc/api/comments": ["libs/api/comments/src/index.ts"],
       "@ehc/api/database": ["libs/api/database/src/index.ts"],
       "@ehc/api/posts": ["libs/api/posts/src/index.ts"],
       "@ehc/api/threads": ["libs/api/threads/src/index.ts"],

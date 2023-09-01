@@ -1,5 +1,5 @@
 import { CreatePost, UpdatePost } from '@ehc/common/dtos';
-import { Category, Post, Thread } from '@ehc/common/entities';
+import { Category, Post, Thread, User } from '@ehc/common/entities';
 import { PostQuery } from '@ehc/common/dtos';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -37,6 +37,7 @@ export class PostsService {
     });
     post.categories = categories;
     post.thread = { id: dto.threadId } as Thread;
+    post.author = { id: dto.authorId } as User;
     return await this.postRepository.save(post);
   }
   async update(id: number, dto: UpdatePost): Promise<Post> {

@@ -8,8 +8,10 @@ import {
   JoinTable,
   ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { Comment } from './comment.entity';
 
 @Entity()
 class Post implements IPost {
@@ -20,15 +22,20 @@ class Post implements IPost {
   @Column()
   body!: string;
 
-  @ManyToMany((type) => Category, (category) => category.posts)
+  @ManyToMany((type) => Category, (category) => category.posts, {
+    cascade: true,
+  })
   @JoinTable()
   categories!: Category[];
 
-  @ManyToOne((type) => User, (user) => user.posts)
+  @ManyToOne((type) => User, (user) => user.posts, { cascade: true })
   author!: User;
 
-  @ManyToOne((type) => Thread, (thread) => thread.posts)
+  @ManyToOne((type) => Thread, (thread) => thread.posts, { cascade: true })
   thread!: Thread;
+
+  @OneToMany((type) => Comment, (comment) => comment.post)
+  comments!: Comment[];
 }
 
 export { Post };

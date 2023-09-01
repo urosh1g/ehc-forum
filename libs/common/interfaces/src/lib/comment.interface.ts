@@ -2,6 +2,7 @@ import { IPost } from "./post.interface";
 import { IUser } from "./user.interface";
 
 interface IComment {
+    id: number;
     author: IUser;
     post: IPost;
     body: string;
