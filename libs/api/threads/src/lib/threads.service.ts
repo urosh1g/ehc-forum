@@ -1,4 +1,4 @@
-import { Category, Thread } from '@ehc/common/entities';
+import { Category, Thread, User } from '@ehc/common/entities';
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -9,14 +9,6 @@ export class ThreadsService {
   constructor(
     @InjectRepository(Thread) private threadRepository: Repository<Thread>
   ) {}
-
-  private async tryFind(id: number): Promise<Thread> {
-    const thread = await this.threadRepository.findOneBy({ id });
-    if (!thread) {
-      throw new NotFoundException(`Thread with id ${id} was not found`);
-    }
-    return thread;
-  }
 
   fetchAll(query: ThreadQuery): Promise<Thread[]> {
     return this.threadRepository.find({ relations: query });
@@ -49,7 +41,10 @@ export class ThreadsService {
   }
 
   async delete(id: number): Promise<Thread> {
-    const thread = await this.tryFind(id);
+    const thread = await this.threadRepository.findOneBy({ id });
+    if (!thread) {
+      throw new NotFoundException(`Thread with id ${id} was not found`);
+    }
     this.threadRepository.delete(thread);
     return thread;
   }

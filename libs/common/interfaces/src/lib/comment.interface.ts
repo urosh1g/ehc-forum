@@ -9,7 +9,6 @@ interface IComment {
 }
 
 type ICreateComment = {
-  authorId: number;
   postId: number;
   body: string;
 };

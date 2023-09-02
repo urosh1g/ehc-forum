@@ -26,8 +26,8 @@ export class UsersService {
   }
 
   async fetchByAlias(alias: string): Promise<User> {
-    const user = await this.usersRepository.findOneBy({alias});
-    if(!user) {
+    const user = await this.usersRepository.findOneBy({ alias });
+    if (!user) {
       throw new NotFoundException(`User with alias ${alias} was not found`);
     }
     return user;

@@ -1,5 +1,5 @@
 const jwtConstants = {
-    secret: 'supersecret'
+  secret: 'supersecret',
 };
 
-export { jwtConstants }
+export { jwtConstants };

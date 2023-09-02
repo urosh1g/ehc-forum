@@ -11,9 +11,6 @@ import {
 class CreateComment implements ICreateComment {
   @IsNotEmpty()
   @IsNumber()
-  authorId!: number;
-  @IsNotEmpty()
-  @IsNumber()
   postId!: number;
   @IsNotEmpty()
   @IsString()

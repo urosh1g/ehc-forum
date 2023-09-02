@@ -13,7 +13,7 @@ export class AuthController {
   @Public()
   @Post('login')
   async login(@Req() req: Request) {
-    return this.authService.login((req.user!) as User);
+    return this.authService.login(req.user! as User);
   }
 
   @Get('test')

@@ -10,7 +10,7 @@ import { AuthModule } from '@ehc/api/auth';
   imports: [
     TypeOrmModule.forFeature([User]),
     forwardRef(() => CategoriesModule),
-    forwardRef(() => AuthModule)
+    forwardRef(() => AuthModule),
   ],
   controllers: [UsersController],
   providers: [UsersService],

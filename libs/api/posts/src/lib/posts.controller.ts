@@ -8,12 +8,15 @@ import {
   Patch,
   Delete,
   Query,
+  Req,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
-import { Post } from '@ehc/common/entities';
+import { Post, User } from '@ehc/common/entities';
 import { CreatePost, UpdatePost } from '@ehc/common/dtos';
 import { PostQuery } from '@ehc/common/dtos';
 import { Public } from '@ehc/api/auth';
+import { Request } from 'express';
+import { JwtUserInfo } from '@ehc/common/interfaces';
 
 @Controller('posts')
 export class PostsController {
@@ -35,20 +38,30 @@ export class PostsController {
   }
 
   @HttpPost()
-  create(@Body() dto: CreatePost): Promise<Post> {
-    return this.postsService.create(dto);
+  create(@Req() request: Request, @Body() dto: CreatePost): Promise<Post> {
+    const user = request.user! as JwtUserInfo;
+    const caller = { id: user.userId, alias: user.alias } as User;
+    return this.postsService.create(dto, caller);
   }
 
   @Patch(':id')
   update(
+    @Req() request: Request,
     @Param('id', ParseIntPipe) id: number,
     @Body() dto: UpdatePost
   ): Promise<Post> {
-    return this.postsService.update(id, dto);
+    const user = request.user! as JwtUserInfo;
+    const caller = { id: user.userId, alias: user.alias } as User;
+    return this.postsService.update(id, dto, caller);
   }
 
   @Delete(':id')
-  delete(@Param('id', ParseIntPipe) id: number): Promise<Post> {
-    return this.postsService.delete(id);
+  delete(
+    @Req() request: Request,
+    @Param('id', ParseIntPipe) id: number
+  ): Promise<Post> {
+    const user = request.user! as JwtUserInfo;
+    const caller = { id: user.userId, alias: user.alias } as User;
+    return this.postsService.delete(id, caller);
   }
 }
