@@ -1,19 +1,19 @@
-import { IPost } from "./post.interface";
-import { IUser } from "./user.interface";
+import { IPost } from './post.interface';
+import { IUser } from './user.interface';
 
 interface IComment {
-    id: number;
-    author: IUser;
-    post: IPost;
-    body: string;
+  id: number;
+  author: IUser;
+  post: IPost;
+  body: string;
 }
 
 type ICreateComment = {
-    authorId: number;
-    postId: number;
-    body: string;
-}
+  authorId: number;
+  postId: number;
+  body: string;
+};
 
 type IUpdateComment = Pick<IComment, 'body'>;
 
-export { IComment, ICreateComment, IUpdateComment }
+export { IComment, ICreateComment, IUpdateComment };

@@ -12,17 +12,17 @@ export class CommentsService {
 
   fetchAll(query: CommentQuery): Promise<Comment[]> {
     return this.commentsRepository.find({
-      relations: query
+      relations: query,
     });
   }
 
   async fetchOne(id: number, query: CommentQuery): Promise<Comment> {
     const comment = await this.commentsRepository.findOne({
       where: { id },
-      relations: query
-    })
+      relations: query,
+    });
     if (!comment) {
-        throw new NotFoundException(`Comment with id ${id} was not found`);
+      throw new NotFoundException(`Comment with id ${id} was not found`);
     }
     return comment;
   }
@@ -35,18 +35,18 @@ export class CommentsService {
   }
 
   async update(id: number, dto: UpdateComment): Promise<Comment> {
-    const comment = await this.commentsRepository.findOneBy({id});
-    if(!comment) {
-        throw new NotFoundException(`Comment with id ${id} was not found`);
+    const comment = await this.commentsRepository.findOneBy({ id });
+    if (!comment) {
+      throw new NotFoundException(`Comment with id ${id} was not found`);
     }
     await this.commentsRepository.update(id, dto);
-    return (await this.commentsRepository.findOneBy({id}))!;
+    return (await this.commentsRepository.findOneBy({ id }))!;
   }
 
   async delete(id: number): Promise<Comment> {
-    const comment = await this.commentsRepository.findOneBy({id});
-    if(!comment) {
-        throw new NotFoundException(`Comment with id ${id} was not found`);
+    const comment = await this.commentsRepository.findOneBy({ id });
+    if (!comment) {
+      throw new NotFoundException(`Comment with id ${id} was not found`);
     }
     this.commentsRepository.delete(id);
     return comment;

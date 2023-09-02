@@ -33,7 +33,7 @@ class User implements IUser {
   @OneToMany((type) => Post, (post) => post.author)
   posts!: Post[];
 
-  @OneToMany((type) => Comment, comment => comment.author)
+  @OneToMany((type) => Comment, (comment) => comment.author)
   comments!: Comment[];
 }
 
