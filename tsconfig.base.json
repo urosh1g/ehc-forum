@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@ehc/api/auth": ["libs/api/auth/src/index.ts"],
       "@ehc/api/categories": ["libs/api/categories/src/index.ts"],
       "@ehc/api/comments": ["libs/api/comments/src/index.ts"],
       "@ehc/api/database": ["libs/api/database/src/index.ts"],

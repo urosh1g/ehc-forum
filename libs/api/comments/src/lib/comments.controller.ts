@@ -14,17 +14,19 @@ import {
 import { CommentsService } from './comments.service';
 import { Comment } from '@ehc/common/entities';
 import { CreateComment, UpdateComment, CommentQuery } from '@ehc/common/dtos';
+import { Public } from '@ehc/api/auth';
 
 @Controller('comments')
-@UseInterceptors(ClassSerializerInterceptor)
 export class CommentsController {
   constructor(private commentsService: CommentsService) {}
 
+  @Public() 
   @Get('')
   fetchAll(@Query() query: CommentQuery): Promise<Comment[]> {
     return this.commentsService.fetchAll(query);
   }
 
+  @Public() 
   @Get(':id')
   fetchOne(
     @Param('id', ParseIntPipe) id: number,

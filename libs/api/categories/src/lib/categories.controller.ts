@@ -16,16 +16,19 @@ import {
   CreateCategory,
   UpdateCategory,
 } from '@ehc/common/dtos';
+import { Public } from '@ehc/api/auth';
 
 @Controller('categories')
 export class CategoriesController {
   constructor(private categoriesService: CategoriesService) {}
 
+  @Public()
   @Get('')
   fetchCategories(@Query() query: CategoryQuery): Promise<Category[]> {
     return this.categoriesService.fetchAll(query);
   }
 
+  @Public()
   @Get(':id')
   fetchById(
     @Param('id', ParseIntPipe) id: number,

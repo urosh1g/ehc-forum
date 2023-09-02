@@ -25,6 +25,14 @@ export class UsersService {
     return user;
   }
 
+  async fetchByAlias(alias: string): Promise<User> {
+    const user = await this.usersRepository.findOneBy({alias});
+    if(!user) {
+      throw new NotFoundException(`User with alias ${alias} was not found`);
+    }
+    return user;
+  }
+
   async fetchByCategory(categoryId: number): Promise<User[]> {
     const category = await this.categoryRepository.findOneBy({
       id: categoryId,

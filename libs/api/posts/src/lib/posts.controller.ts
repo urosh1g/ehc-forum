@@ -13,16 +13,19 @@ import { PostsService } from './posts.service';
 import { Post } from '@ehc/common/entities';
 import { CreatePost, UpdatePost } from '@ehc/common/dtos';
 import { PostQuery } from '@ehc/common/dtos';
+import { Public } from '@ehc/api/auth';
 
 @Controller('posts')
 export class PostsController {
   constructor(private postsService: PostsService) {}
 
+  @Public()
   @Get('')
   fetchAll(@Query() query: PostQuery): Promise<Post[]> {
     return this.postsService.fetchAll(query);
   }
 
+  @Public()
   @Get(':id')
   fetchOne(
     @Param('id', ParseIntPipe) id: number,

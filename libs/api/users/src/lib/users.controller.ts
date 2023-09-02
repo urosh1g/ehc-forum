@@ -11,17 +11,20 @@ import {
 import { UsersService } from './users.service';
 import { User } from '@ehc/common/entities';
 import { CreateUser } from '@ehc/common/dtos';
+import { Public } from '@ehc/api/auth';
 
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
 
+  @Public()
   @Get('')
   fetchUsers(): Promise<User[]> {
     return this.usersService.fetchAll();
   }
 
   @Get('category/:id')
+  @Public()
   fetchByCategory(
     @Param('id', ParseIntPipe) categoryId: number
   ): Promise<User[]> {
@@ -29,6 +32,7 @@ export class UsersController {
   }
 
   @Get(':id')
+  @Public()
   fetchById(@Param('id', ParseIntPipe) id: number): Promise<User> {
     return this.usersService.fetchById(id);
   }

@@ -5,6 +5,7 @@ import { CategoriesModule } from '@ehc/api/categories';
 import { PostsModule } from '@ehc/api/posts';
 import { ThreadsModule } from '@ehc/api/threads';
 import { CommentsModule } from '@ehc/api/comments';
+import { AuthModule } from '@ehc/api/auth';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -17,6 +18,7 @@ import { AppService } from './app.service';
     PostsModule,
     ThreadsModule,
     CommentsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
