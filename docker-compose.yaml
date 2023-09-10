@@ -1,0 +1,44 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: rwa
+      POSTGRES_PASSWORD: rwa
+      POSTGRES_DB: rwa
+    ports:
+      - "5432:5432"
+    networks:
+      - app-network
+
+  nestjs-backend:
+    build:
+      context: .
+      dockerfile: ./apps/api/Dockerfile
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: rwa
+      POSTGRES_PASSWORD: rwa
+      POSTGRES_DB: rwa
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+  angular-client:
+    build:
+      context: .
+      dockerfile: ./apps/client/Dockerfile
+    ports:
+      - "4200:4200"
+    depends_on:
+      - nestjs-backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

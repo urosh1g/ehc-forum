@@ -1,0 +1,3 @@
+<div *ngIf="(threads$ | async) as threads">
+    <ehc-thread-preview (clicked)="onThreadClicked(thread)" *ngFor="let thread of threads" [thread]="thread"></ehc-thread-preview>
+</div>

@@ -18,7 +18,7 @@ export class PostsService {
 
   fetchAll(query: PostQuery): Promise<Post[]> {
     return this.postRepository.find({
-      relations: query,
+      relations: { comments: true},
     });
   }
   async fetchOne(id: number, query: PostQuery): Promise<Post> {
