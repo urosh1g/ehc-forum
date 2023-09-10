@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as ThreadActions from '../../+state/threads.actions'
 import * as ThreadSelectors from '../../+state/threads.selectors';
+import * as PostsActions from '../../../posts/+state/posts.actions'
 import { Store } from '@ngrx/store';
 import { Thread } from '@ehc/common/entities';
 import { Router } from '@angular/router';

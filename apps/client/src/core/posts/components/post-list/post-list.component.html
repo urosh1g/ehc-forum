@@ -1,1 +1,3 @@
-<p>post-list works!</p>
+<div class="container" *ngIf="(posts$ | async) as posts">
+    <ehc-post-preview *ngFor="let post of posts" [post]="post" (clicked)="onPostClicked(post)"></ehc-post-preview>
+</div>

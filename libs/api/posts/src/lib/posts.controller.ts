@@ -28,6 +28,12 @@ export class PostsController {
     return this.postsService.fetchAll(query);
   }
 
+  @Get('/thread/:threadId')
+  @Public()
+  fetchByThread(@Param('threadId', ParseIntPipe)id: number, @Query() query: PostQuery): Promise<Post[]> {
+    return this.postsService.fetchByThread(id, query);
+  }
+
   @Public()
   @Get(':id')
   fetchOne(

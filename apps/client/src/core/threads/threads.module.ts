@@ -10,10 +10,12 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromThreads from './+state/threads.reducer';
 import { ThreadsEffects } from './+state/threads.effects';
 import { MatChipsModule } from '@angular/material/chips';
+import { PostsModule } from '../posts/posts.module';
 
 @NgModule({
   declarations: [ThreadListComponent, ThreadPreviewComponent, ThreadComponent],
   imports: [
+    PostsModule,
     MatChipsModule,
     CommonModule,
     ThreadsRoutingModule,

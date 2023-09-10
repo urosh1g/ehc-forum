@@ -16,9 +16,20 @@ export class PostsService {
     private postRepository: Repository<Post>
   ) {}
 
+  fetchByThread(id: number, query: PostQuery): Promise<Post[]> {
+    return this.postRepository.find({
+      where: {
+        thread: {
+          id,
+        },
+      },
+      relations: query
+    });
+  }
+
   fetchAll(query: PostQuery): Promise<Post[]> {
     return this.postRepository.find({
-      relations: { comments: true},
+      relations: { comments: true },
     });
   }
   async fetchOne(id: number, query: PostQuery): Promise<Post> {
