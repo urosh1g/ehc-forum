@@ -11,4 +11,8 @@ export class PostPreviewComponent {
   post: Post | null = null;
   @Output()
   clicked: EventEmitter<Post> = new EventEmitter<Post>();
+  
+  onClick() {
+    this.clicked.emit(this.post!);
+  }
 }

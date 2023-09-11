@@ -17,4 +17,8 @@ export class PostsService {
   fetchByThread(threadId: number): Observable<Post[]> {
     return this.http.get<Post[]>(`/api/posts/thread/${threadId}?author=true&comments=true`);
   }
+
+  fetchOne(id: number): Observable<Post> {
+    return this.http.get<Post>(`/api/posts/${id}?author=true&comments=true`);
+  }
 }

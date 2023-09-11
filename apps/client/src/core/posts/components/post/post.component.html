@@ -1,1 +1,6 @@
-<p>post works!</p>
+<div class="container" *ngIf="(post$ | async) as post">
+    <h1>Title: {{post.title}}</h1>
+    <h2>Author: {{post.author.alias}}</h2>
+    <p>Content</p>
+    <p>{{post.body}}</p>
+</div>

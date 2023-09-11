@@ -31,6 +31,20 @@ const reducer = createReducer(
     loaded: false,
     error: null,
   })),
+  on(PostsActions.selectPost, (state, { postId }) => ({
+    ...state,
+    selectedId: postId,
+  })),
+  on(PostsActions.loadPostSuccess, (state, action) => {
+    return postsAdapter.addOne(action.post, {
+      ...state,
+      selectedId: action.post.id,
+    });
+  }),
+  on(PostsActions.loadPostFailure, (state, { error }) => ({
+    ...state,
+    error,
+  })),
   on(PostsActions.loadPostsSuccess, (state, { posts }) =>
     postsAdapter.setAll(posts, { ...state, loaded: true })
   ),
