@@ -11,6 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CategoriesModule } from '../categories/categories.module';
 import { PostsModule } from '../posts/posts.module';
 import { ThreadsModule } from '../threads/threads.module';
+import { AuthModule } from '../auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -29,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CategoriesModule,
     ThreadsModule,
     PostsModule,
+    AuthModule,
     BrowserAnimationsModule,
   ],
   providers: [],
