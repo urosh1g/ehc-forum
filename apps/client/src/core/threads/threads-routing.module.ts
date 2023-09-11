@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ThreadListComponent } from './components/thread-list/thread-list.component';
 import { ThreadComponent } from './components/thread/thread.component';
+import { threadsResolver } from './resolvers/threads.resolver';
 
 const routes: Routes = [
   {
@@ -10,7 +11,10 @@ const routes: Routes = [
   },
   {
     path: 'threads/:id',
-    component: ThreadComponent
+    component: ThreadComponent,
+    resolve: {
+      threadsResolver
+    }
   }
 ];
 

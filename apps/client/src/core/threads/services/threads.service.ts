@@ -13,4 +13,8 @@ export class ThreadsService {
   fetchAll(): Observable<Thread[]> {
     return this.http.get<Thread[]>('/api/threads?posts=true&categories=true');
   }
+
+  fetchOne(id: number): Observable<Thread> {
+    return this.http.get<Thread>(`/api/threads/${id}?posts=true&categories=true`);
+  }
 }

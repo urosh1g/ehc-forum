@@ -37,6 +37,12 @@ const reducer = createReducer(
     ...state,
     selectedId: action.thread.id,
   })),
+  on(ThreadsActions.loadThreadSuccess, (state, action) => {
+    return threadsAdapter.setOne(action.thread, {
+      ...state,
+      selectedId: action.thread.id,
+    });
+  }),
   on(ThreadsActions.loadThreadsSuccess, (state, { threads }) =>
     threadsAdapter.setAll(threads, { ...state, loaded: true })
   ),
