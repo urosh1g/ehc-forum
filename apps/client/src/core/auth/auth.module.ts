@@ -9,6 +9,8 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromAuth from './+state/auth.reducer';
 import { AuthEffects } from './+state/auth.effects';
 import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -21,5 +23,12 @@ import { LoginComponent } from './components/login/login.component';
     EffectsModule.forFeature([AuthEffects]),
   ],
   exports: [LoginComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
 })
 export class AuthModule {}

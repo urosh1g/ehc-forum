@@ -9,7 +9,7 @@ export const AUTH_FEATURE_KEY = 'auth';
 export interface AuthState extends EntityState<User> {
   loaded: boolean; // has the Auth list been loaded
   error?: string | null; // last known error (if any)
-  token: string;
+  token: string | null;
 }
 
 export interface AuthPartialState {
@@ -21,7 +21,7 @@ export const authAdapter: EntityAdapter<User> = createEntityAdapter<User>();
 export const initialAuthState: AuthState = authAdapter.getInitialState({
   // set initial required properties
   loaded: false,
-  token: "",
+  token: null,
 });
 
 const reducer = createReducer(
