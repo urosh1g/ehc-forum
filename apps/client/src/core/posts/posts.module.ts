@@ -9,10 +9,12 @@ import { PostsEffects } from './+state/posts.effects';
 import { PostListComponent } from './components/post-list/post-list.component';
 import { PostPreviewComponent } from './components/post-preview/post-preview.component';
 import { PostComponent } from './components/post/post.component';
+import { CommentsModule } from '../comments/comments.module';
 
 @NgModule({
   declarations: [PostListComponent, PostPreviewComponent, PostComponent],
   imports: [
+    CommentsModule,
     CommonModule,
     PostsRoutingModule,
     StoreModule.forFeature(fromPosts.POSTS_FEATURE_KEY, fromPosts.postsReducer),

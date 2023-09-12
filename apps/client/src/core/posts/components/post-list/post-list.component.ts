@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as PostsActions from '../../+state/posts.actions'
 import * as PostsSelectors from '../../+state/posts.selectors';
+import * as AuthSelectors from '../../../auth/+state/auth.selectors';
 import { Post } from '@ehc/common/entities';
 import { Router } from '@angular/router';
 
@@ -14,6 +15,7 @@ export class PostListComponent implements OnInit{
   @Input()
   threadId: number = 0;
   posts$ = this.store.select(PostsSelectors.selectAllPosts);
+  auth$ = this.store.select(AuthSelectors.selectAuthState);
   constructor(private store: Store, private router: Router) {}
   ngOnInit(): void {
     this.store.dispatch(PostsActions.initThreadPosts({threadId: this.threadId}));
