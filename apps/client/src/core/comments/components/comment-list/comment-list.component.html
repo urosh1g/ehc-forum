@@ -1,0 +1,6 @@
+<div class="container" *ngIf="(comments$ | async) as comments">
+    <div *ngFor="let comment of comments">
+        {{comment.author.alias}}
+        {{comment.body}}
+    </div>
+</div>
