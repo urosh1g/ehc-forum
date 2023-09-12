@@ -22,6 +22,17 @@ export class CommentsService {
     });
   }
 
+  fetchByPost(postId: number, query: CommentQuery): Promise<Comment[]> {
+    return this.commentsRepository.find({
+      where: {
+        post: {
+          id: postId,
+        },
+      },
+      relations: query,
+    });
+  }
+
   async fetchOne(id: number, query: CommentQuery): Promise<Comment> {
     const comment = await this.commentsRepository.findOne({
       where: { id },

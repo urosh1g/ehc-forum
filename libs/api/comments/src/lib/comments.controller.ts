@@ -28,6 +28,12 @@ export class CommentsController {
   }
 
   @Public()
+  @Get('/post/:postId')
+  fetchByPost(@Param('postId', ParseIntPipe)postId: number, @Query() query: CommentQuery): Promise<Comment[]> {
+    return this.commentsService.fetchByPost(postId, query);
+  }
+
+  @Public()
   @Get(':id')
   fetchOne(
     @Param('id', ParseIntPipe) id: number,
