@@ -1,1 +1,17 @@
-<router-outlet></router-outlet>
+<div class="container">
+  <header>
+    <mat-tab-group>
+        <mat-tab label="Home"></mat-tab>
+        <mat-tab label="Login" (click)="showLogin()"></mat-tab>
+    </mat-tab-group>
+  </header>
+  <div class="content">
+    <div class="main">
+    <router-outlet></router-outlet>
+    </div>
+    <aside>
+        <!-- recent posts -->
+    </aside>
+  </div>
+  <footer></footer>
+</div>

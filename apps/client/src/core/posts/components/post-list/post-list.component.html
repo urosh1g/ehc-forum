@@ -1,10 +1,23 @@
-<div class="container" *ngIf="(posts$ | async) as posts">
-    <div class="add" *ngIf="(auth$ | async)!.token as auth">
-        <div>
-            <input type="text" placeholder="Title">
-            <textarea placeholder="Content"></textarea>
-            <button>Create Post</button>
-        </div>
+<div class="container" *ngIf="posts$ | async as posts">
+  <!-- <div class="add" *ngIf="(auth$ | async)!.token as auth"> -->
+  <div class="add">
+    <div class="form">
+      <input [(ngModel)]="title" type="text" placeholder="Title" />
+      <mat-chip-listbox multiple>
+        <mat-chip-option
+          [selected]="selectedCategories.includes(category.id)"
+          (click)="toggleSelected(category.id)"
+          *ngFor="let category of categories$ | async"
+          >{{ category.name }}</mat-chip-option
+        >
+      </mat-chip-listbox>
+      <textarea [(ngModel)]="body" placeholder="Content"></textarea>
+      <button (click)="createPost()">Create Post</button>
     </div>
-    <ehc-post-preview *ngFor="let post of posts" [post]="post" (clicked)="onPostClicked(post)"></ehc-post-preview>
+  </div>
+  <ehc-post-preview
+    *ngFor="let post of posts"
+    [post]="post"
+    (clicked)="onPostClicked(post)"
+  ></ehc-post-preview>
 </div>

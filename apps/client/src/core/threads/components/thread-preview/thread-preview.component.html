@@ -1,7 +1,6 @@
-<div class="container" *ngIf="thread">
-    <h3 (click)="onClick()">Name: {{thread.name}}</h3>
+<div class="container" *ngIf="thread" (click)="onClick()">
+    <p><strong>{{thread.name}}</strong></p>
     <p>Posts: {{posts}}</p>
-    <p>Categories</p>
     <mat-chip-listbox *ngIf="thread.categories" aria-label="Categories" [selectable]="false">
         <mat-chip-option color="accent" *ngFor="let category of thread.categories">{{category.name}}</mat-chip-option>
     </mat-chip-listbox>

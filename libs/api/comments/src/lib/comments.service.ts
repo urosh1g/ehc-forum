@@ -29,7 +29,7 @@ export class CommentsService {
           id: postId,
         },
       },
-      relations: query,
+      relations: query
     });
   }
 

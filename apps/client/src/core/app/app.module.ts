@@ -13,10 +13,12 @@ import { PostsModule } from '../posts/posts.module';
 import { ThreadsModule } from '../threads/threads.module';
 import { AuthModule } from '../auth/auth.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    MatTabsModule,
     HttpClientModule,
     BrowserModule,
     RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),

@@ -12,6 +12,16 @@ export const selectPost = createAction(
   props<{ postId: number }>()
 );
 
+export const createPost = createAction(
+  '[Posts Page] Create Post',
+  props<{
+    title: string;
+    body: string;
+    threadId: number;
+    categories: number[];
+  }>()
+);
+
 export const loadPost = createAction(
   '[Posts Page] Load Post',
   props<{ postId: number }>()

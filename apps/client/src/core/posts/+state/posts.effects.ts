@@ -6,7 +6,6 @@ import * as PostsActions from './posts.actions';
 import * as PostsFeature from './posts.reducer';
 import { PostsService } from '../services/posts.service';
 import { Store } from '@ngrx/store';
-import { Router } from '@angular/router';
 
 @Injectable()
 export class PostsEffects {
