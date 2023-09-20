@@ -11,7 +11,7 @@ class Comment implements IComment {
   author!: User;
   @ManyToOne((type) => Post, (post) => post.comments, { cascade: true })
   post!: Post;
-  @Column()
+  @Column({type: 'text'})
   body!: string;
 }
 

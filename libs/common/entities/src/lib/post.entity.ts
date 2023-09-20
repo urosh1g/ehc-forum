@@ -19,7 +19,7 @@ class Post implements IPost {
   id!: number;
   @Column()
   title!: string;
-  @Column()
+  @Column({type: 'text'})
   body!: string;
 
   @ManyToMany((type) => Category, (category) => category.posts, {

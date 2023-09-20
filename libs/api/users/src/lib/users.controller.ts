@@ -38,6 +38,7 @@ export class UsersController {
   }
 
   @Post('')
+  @Public()
   createUser(@Body() dto: CreateUser): Promise<User> {
     return this.usersService.create(dto);
   }
